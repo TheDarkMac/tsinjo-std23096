@@ -1,14 +1,22 @@
 package com.example.demo.endpoint.rest.controller;
 
+import com.example.demo.endpoint.dto.DonationView;
+import com.example.demo.service.DonationService;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
+@AllArgsConstructor
 public class DashboardController {
-    private final DonationService donationService;
 
-    public DashboardController(DonationService donationService) {
-        this.donationService = donationService;
-    }
+    private final DonationService donationService;
 
     @GetMapping("/")
     public String showPage(Model model) {

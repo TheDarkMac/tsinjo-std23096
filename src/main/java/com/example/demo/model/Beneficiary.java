@@ -1,4 +1,11 @@
 package com.example.demo.model;
 
-public record Beneficiary(String email, String fullName) {
+import jakarta.persistence.Embeddable;
+import lombok.Data;
+
+@Embeddable
+@Data
+public class Beneficiary{
+    private String email;
+    private String fullName;
 }

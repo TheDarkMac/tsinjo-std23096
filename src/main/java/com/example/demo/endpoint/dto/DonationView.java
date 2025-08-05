@@ -1,17 +1,10 @@
 package com.example.demo.endpoint.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-public class DonationView {
-    public String donorName;
-    public String donorEmail;
-    public String paymentMethod;
-    public String paymentRef;
-    public String status;
-    public Integer amount;
-    public LocalDateTime date;
-
-    public String beneficiaryName; // null si pas d’aide
-    public String beneficiaryEmail;
-    public String comment;
-}
+public record DonationView (
+    Long id,
+    int amount,
+    String donorName,
+    LocalDate date
+){}

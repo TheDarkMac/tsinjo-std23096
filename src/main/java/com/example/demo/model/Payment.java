@@ -1,12 +1,21 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "payment")
+@Data
 public class Payment {
-    private Long id;
-    private LocalDateTime date;
-    private int amountInMiaraka;
-    private String paymentType;
-    private String pspId;
-    private PaymentStatus paymentStatus;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    LocalDateTime date;
+    int amountInMiaraka;
+    String paymentType;
+    @Column(unique = true)
+    String pspId;
+    PaymentStatus paymentStatus;
 }

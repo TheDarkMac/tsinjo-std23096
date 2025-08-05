@@ -1,8 +1,16 @@
 package com.example.demo.model;
 
-public class Help {
-    private Long id;
-    private Beneficiary beneficiary;
-    private Payment payment;
-    private String description;
-}
+import jakarta.persistence.*;
+
+@Entity
+public record Help(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id,
+    @Embedded
+    Beneficiary beneficiary,
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payment_id")
+    Payment payment,
+    String description
+    ){}
