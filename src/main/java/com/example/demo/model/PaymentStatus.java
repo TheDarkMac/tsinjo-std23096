@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-public enum PayementStatus {
+public enum PaymentStatus {
     VERIFYING,
     SUCCESS,
     FAILED

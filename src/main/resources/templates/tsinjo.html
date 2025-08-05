@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tsinjo - Solidarité</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+        }
+        .container {
+            border: 1px dashed #888;
+            border-radius: 30px;
+            padding: 20px;
+            width: 400px;
+        }
+        input, button {
+            display: block;
+            margin-top: 10px;
+            width: 100%;
+            padding: 8px;
+        }
+        .history {
+            margin-top: 20px;
+        }
+        .history li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Tsinjo</h2>
+
+    <form th:action="@{/donate}" method="post">
+        <label>Email</label>
+        <input type="email" name="email" required />
+
+        <label>Moyen de paiement</label>
+        <input type="text" name="paymentMethod" required />
+
+        <label>Référence de paiement</label>
+        <input type="text" name="paymentRef" required />
+
+        <button type="submit">Donner !</button>
+    </form>
+
+    <div class="history">
+        <h3>Historique</h3>
+        <ul>
+            <li th:each="donation : ${donations}">
+                <span th:text="${donation.amount}">+ 50 000Ar</span>
+                (<span th:text="${donation.status}">confirmé</span>,
+                <span th:text="${donation.paymentMethod}">Orange Money</span>).
+                <br/>
+                Par <span th:text="${donation.donorName}">Lou Andria</span>
+                (<a th:href="'mailto:' + ${donation.donorEmail}" th:text="${donation.donorEmail}">lou@hei.school</a>).
+                <br/>
+                <span th:if="${donation.beneficiaryName != null}">
+                        Pour <span th:text="${donation.beneficiaryName}">Koto Kely</span>
+                        (<a th:href="'mailto:' + ${donation.beneficiaryEmail}" th:text="${donation.beneficiaryEmail}">koto@kely.mg</a>).
+                        <span th:text="${donation.comment}">Koto a été renversé par une moto...</span>
+                    </span>
+                <br/>
+                <span th:text="${#temporals.format(donation.date, 'dd/MM/yyyy')}">11/08/2025</span>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
