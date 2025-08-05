@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Donor{
-    private String email;
-    private String fullName;
+public class Donor {
+  private String email;
+  private String fullName;
 
-    public Donor(String email){
-        this.email = email;
-    }
+  public Donor(String email) {
+    this.email = email;
+  }
 }

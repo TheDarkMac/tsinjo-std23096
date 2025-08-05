@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Embeddable
 @Data
-public class Beneficiary{
-    private String email;
-    private String fullName;
+public class Beneficiary {
+  private String email;
+  private String fullName;
 }
